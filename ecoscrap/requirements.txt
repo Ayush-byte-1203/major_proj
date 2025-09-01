@@ -1,0 +1,78 @@
+# EcoScrap Flask Backend Dependencies
+# ===================================
+# This file lists all Python packages required to run the EcoScrap Flask backend
+# Each package is pinned to a specific version for consistency and stability
+
+# ========================================
+# CORE FRAMEWORK
+# ========================================
+# Flask web framework - the main application framework
+Flask==3.0.0
+
+# ========================================
+# DATABASE & ORM
+# ========================================
+# SQLAlchemy ORM for database operations
+Flask-SQLAlchemy==3.1.1
+
+# ========================================
+# AUTHENTICATION & SECURITY
+# ========================================
+# User session management and authentication
+Flask-Login==0.6.3
+# Password hashing and security utilities
+Werkzeug==3.0.1
+
+# ========================================
+# CONFIGURATION & ENVIRONMENT
+# ========================================
+# Environment variable management (.env files)
+python-dotenv==1.0.0
+# Cross-Origin Resource Sharing for frontend integration
+Flask-CORS==4.0.0
+
+# ========================================
+# DATABASE DRIVERS
+# ========================================
+# SQLite is included with Python (no additional package needed)
+# PostgreSQL driver (uncomment if using PostgreSQL in production)
+# psycopg2-binary==2.9.9
+# MySQL driver (uncomment if using MySQL in production)
+# mysqlclient==2.1.1
+
+# ========================================
+# PRODUCTION DEPLOYMENT
+# ========================================
+# Production WSGI server for deployment
+gunicorn==21.2.0
+
+# ========================================
+# DEVELOPMENT TOOLS
+# ========================================
+# Database migration and schema management
+Flask-Migrate==4.0.5
+# Command-line script management
+Flask-Script==2.0.6
+
+# ========================================
+# TESTING & QUALITY
+# ========================================
+# Testing framework
+pytest==7.4.3
+# Flask testing utilities
+pytest-flask==1.3.0
+
+# ========================================
+# CODE QUALITY & FORMATTING
+# ========================================
+# Code formatter (Black)
+black==23.11.0
+# Linter for code quality checks
+flake8==6.1.0
+
+# ========================================
+# INSTALLATION NOTES
+# ========================================
+# Install all dependencies: pip install -r requirements.txt
+# For development only: pip install -r requirements.txt
+# For production: pip install -r requirements.txt --no-dev

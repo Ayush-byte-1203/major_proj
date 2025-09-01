@@ -1,0 +1,47 @@
+/**
+ * EcoScrap Application - Main CSS Entry Point
+ * 
+ * This file serves as the main CSS entry point for the EcoScrap application.
+ * It imports all other stylesheets in the correct order to ensure proper
+ * cascading and organization of styles.
+ * 
+ * CSS Architecture:
+ * - base.css: Reset, typography, and fundamental styles
+ * - components.css: Reusable UI components and patterns
+ * - layout.css: Page layout, grid systems, and structural styles
+ * - utilities.css: Helper classes and utility functions
+ * 
+ * Import Order:
+ * 1. Base styles (reset, typography, variables)
+ * 2. Component styles (buttons, forms, cards, etc.)
+ * 3. Layout styles (grid, sections, containers)
+ * 4. Utility styles (helpers, modifiers)
+ * 
+ * @author EcoScrap Development Team
+ * @version 1.0.0
+ * @since 2024
+ */
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+/* Import base styles including CSS reset, typography, and CSS variables */
+@import url('./base.css');
+
+/* ========================================
+   COMPONENT STYLES
+   ======================================== */
+/* Import component styles for buttons, forms, cards, modals, and other UI elements */
+@import url('./components.css');
+
+/* ========================================
+   LAYOUT STYLES
+   ======================================== */
+/* Import layout styles for page structure, grid systems, and responsive design */
+@import url('./layout.css');
+
+/* ========================================
+   UTILITY STYLES
+   ======================================== */
+/* Import utility classes for spacing, colors, typography, and other helpers */
+@import url('./utilities.css');

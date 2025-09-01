@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoScrap - Sustainable Scrap Marketplace</title>
+    <!-- Main CSS file that imports all other stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- ========================================
+         HEADER & NAVIGATION SECTION
+         ======================================== -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- Brand Logo - Clickable to return to home -->
+                <div class="nav-brand">
+                    <h2>EcoScrap</h2>
+                </div>
+
+                <!-- Mobile Menu Toggle Button - Hamburger Menu -->
+                <button class="nav-toggle" id="navToggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+
+                <!-- Role-based Navigation Menu - Different menus for different user types -->
+                <div class="nav-menu" id="navMenu">
+                    <!-- Guest Navigation - Visible when user is not logged in -->
+                    <div id="guestNav" class="nav-group">
+                        <a href="#" class="nav-link active" data-section="home">Home</a>
+                        <a href="#" class="nav-link" data-section="rates">Rates</a>
+                        <a href="#" class="nav-link" data-section="about">About</a>
+                    </div>
+
+                    <!-- Customer Navigation - Visible when customer is logged in -->
+                    <div id="customerNav" class="nav-group hidden">
+                        <a href="#" class="nav-link active" data-section="home">Home</a>
+                        <a href="#" class="nav-link" data-section="marketplace">Marketplace</a>
+                        <a href="#" class="nav-link" data-section="cart">Cart (<span id="cartCount">0</span>)</a>
+                        <a href="#" class="nav-link" data-section="orders">My Orders</a>
+                        <a href="#" class="nav-link" data-section="pickups">My Pickups</a>
+                        <a href="#" class="nav-link" data-section="rates">Rates</a>
+                        <a href="#" class="nav-link" data-section="tips">Tips & Guides</a>
+                        <a href="#" class="nav-link" data-section="profile">Profile</a>
+                    </div>
+
+                    <!-- Dealer Navigation - Visible when dealer is logged in -->
+                    <div id="dealerNav" class="nav-group hidden">
+                        <a href="#" class="nav-link active" data-section="dashboard">Dashboard</a>
+                        <a href="#" class="nav-link" data-section="my-products">My Products</a>
+                        <a href="#" class="nav-link" data-section="add-product">Add Product</a>
+                        <a href="#" class="nav-link" data-section="dealer-orders">Orders</a>
+                        <a href="#" class="nav-link" data-section="dealer-pickups">Pickups</a>
+                        <a href="#" class="nav-link" data-section="profile">Profile</a>
+                    </div>
+
+                    <!-- Admin Navigation - Visible when admin is logged in -->
+                    <div id="adminNav" class="nav-group hidden">
+                        <a href="#" class="nav-link active" data-section="admin-dashboard">Dashboard</a>
+                        <a href="#" class="nav-link" data-section="user-management">Users</a>
+                        <a href="#" class="nav-link" data-section="product-management">Products</a>
+                        <a href="#" class="nav-link" data-section="transactions">Transactions</a>
+                        <a href="#" class="nav-link" data-section="rates-management">Rates</a>
+                        <a href="#" class="nav-link" data-section="profile">Profile</a>
+                    </div>
+                </div>
+
+                <!-- User Actions Section - Login/Register buttons and user profile -->
+                <div class="nav-actions">
+                    <div class="user-menu" id="userMenu">
+                        <!-- User Logged Out State -->
+                        <div class="user-logged-out">
+                            <button class="btn btn--outline btn--sm" id="loginBtn">Login</button>
+                            <button class="btn btn--primary btn--sm" id="registerBtn">Register</button>
+                        </div>
+                        <!-- User Logged In State -->
+                        <div class="user-logged-in hidden">
+                            <div class="user-dropdown">
+                                <button class="user-profile-btn">
+                                    <span class="user-avatar">JD</span>
+                                    <span class="user-name">John Doe</span>
+                                </button>
+                                <div class="user-dropdown-menu">
+                                    <div class="user-role-badge">
+                                        <span id="userRoleBadge">Customer</span>
+                                    </div>
+                                    <hr>
+                                    <a href="#" class="dropdown-link" id="logoutBtn">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ========================================
+         MAIN CONTENT AREA
+         ======================================== -->
+    <main class="main-content">
+        <!-- ========================================
+             HOME SECTION - Main landing page for guests and customers
+             ======================================== -->
+        <section id="home" class="section active">
+            <!-- Hero Section - Main banner with call-to-action -->
+            <div class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1 class="typing-text">Turn Your Scrap Into Cash</h1>
+                        <p class="fade-in-up">Join the sustainable marketplace where your waste becomes someone else's resource</p>
+                        <div class="hero-actions fade-in-up">
+                            <button class="btn btn--primary btn--lg" id="heroBookPickup">Book Pickup</button>
+                            <button class="btn btn--outline btn--lg" data-section="marketplace">Explore Marketplace</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pickup Booking Form - Quick pickup scheduling for customers -->
+            <div class="container animated-section" id="pickupSection">
+                <div class="section-header">
+                    <h2>Book a Pickup</h2>
+                    <p>Schedule a pickup for your scrap materials</p>
+                </div>
+                <form class="pickup-form card floating-card" id="quickPickupForm">
+                    <div class="card__body">
+                        <!-- Material and Weight Selection -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Material Type *</label>
+                                <select class="form-control" name="material" required>
+                                    <option value="">Select material</option>
+                                    <option value="aluminum">Aluminum</option>
+                                    <option value="copper">Copper</option>
+                                    <option value="steel">Steel</option>
+                                    <option value="brass">Brass</option>
+                                    <option value="iron">Iron</option>
+                                    <option value="plastic">Plastic</option>
+                                    <option value="cardboard">Cardboard</option>
+                                    <option value="newspaper">Newspaper</option>
+                                    <option value="electronics">Electronics</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Weight (KG) *</label>
+                                <input type="number" class="form-control" name="weight" min="1" max="1000" required>
+                            </div>
+                        </div>
+                        <!-- Date and Time Selection -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Pickup Date *</label>
+                                <input type="date" class="form-control" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Time Slot *</label>
+                                <select class="form-control" name="time" required>
+                                    <option value="">Select time</option>
+                                    <option value="09:00-12:00">9:00 AM - 12:00 PM</option>
+                                    <option value="12:00-15:00">12:00 PM - 3:00 PM</option>
+                                    <option value="15:00-18:00">3:00 PM - 6:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Address Input -->
+                        <div class="form-group">
+                            <label class="form-label">Address *</label>
+                            <textarea class="form-control" rows="2" name="address" required></textarea>
+                        </div>
+                        <!-- Estimated Value Display (calculated dynamically) -->
+                        <div id="estimatedValue" class="estimated-price hidden">
+                            <h4>Estimated Value: ₹<span id="estimatedAmount">0</span></h4>
+                        </div>
+                        <!-- Submit Button with Loading State -->
+                        <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                            <span class="btn-text">Book Pickup</span>
+                            <span class="btn-loading hidden">Booking...</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Current Rates Section - Display today's market rates -->
+            <div class="container animated-section">
+                <div class="section-header">
+                    <h2>Current Scrap Rates</h2>
+                    <p>Today's market rates for different materials</p>
+                </div>
+                <div class="rates-grid" id="homeRatesGrid">
+                    <!-- Rates will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             MARKETPLACE SECTION - Customer shopping area
+             ======================================== -->
+        <section id="marketplace" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Marketplace</h1>
+                    <p>Buy recycled materials from verified dealers</p>
+                </div>
+
+                <!-- Search and Filter Controls -->
+                <div class="marketplace-filters">
+                    <select class="form-control filter-select" id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="metals">Metals</option>
+                        <option value="plastics">Plastics</option>
+                        <option value="paper">Paper</option>
+                        <option value="electronics">Electronics</option>
+                    </select>
+                    <input type="text" class="form-control" placeholder="Search products..." id="searchInput">
+                </div>
+
+                <!-- Products Grid - Dynamically populated -->
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             CART SECTION - Shopping cart management
+             ======================================== -->
+        <section id="cart" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Shopping Cart</h1>
+                    <p>Review your selected items</p>
+                </div>
+                <div class="cart-content" id="cartContent">
+                    <!-- Cart items will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             ORDERS SECTION - Customer order history
+             ======================================== -->
+        <section id="orders" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>My Orders</h1>
+                    <p>Track your purchase history</p>
+                </div>
+                <div class="orders-list" id="ordersList">
+                    <!-- Orders will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             PICKUPS SECTION - Customer pickup tracking
+             ======================================== -->
+        <section id="pickups" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>My Pickups</h1>
+                    <p>Track your pickup requests</p>
+                </div>
+                <div class="pickups-list" id="pickupsList">
+                    <!-- Pickups will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             TIPS & GUIDES SECTION - Educational content for customers
+             ======================================== -->
+        <section id="tips" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Tips & Guides</h1>
+                    <p>Expert advice to maximize your scrap value and help the environment</p>
+                </div>
+                
+                <!-- Tips Category Filter -->
+                <div class="tips-filters">
+                    <select class="form-control filter-select" id="categoryTipsFilter">
+                        <option value="">All Categories</option>
+                        <option value="Preparation">Preparation</option>
+                        <option value="Rates">Rates</option>
+                        <option value="Safety">Safety</option>
+                        <option value="Environment">Environment</option>
+                        <option value="Identification">Identification</option>
+                        <option value="Storage">Storage</option>
+                    </select>
+                </div>
+
+                <!-- Tips Grid - Dynamically populated -->
+                <div class="tips-grid" id="tipsGrid">
+                    <!-- Tips will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             DEALER DASHBOARD SECTION - Business overview for dealers
+             ======================================== -->
+        <section id="dashboard" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Dealer Dashboard</h1>
+                    <p>Manage your business operations</p>
+                </div>
+                <div class="dashboard-stats" id="dealerStats">
+                    <!-- Dealer statistics will be dynamically loaded here by JavaScript -->
+                </div>
+                <div class="dashboard-actions">
+                    <button class="btn btn--primary" data-section="add-product">Add New Product</button>
+                    <button class="btn btn--outline" data-section="dealer-orders">View Orders</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             DEALER PRODUCTS SECTION - Product management for dealers
+             ======================================== -->
+        <section id="my-products" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>My Products</h1>
+                    <p>Manage your product listings</p>
+                </div>
+                <div class="products-list" id="dealerProductsList">
+                    <!-- Dealer products will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             ADD PRODUCT SECTION - Product creation form for dealers
+             ======================================== -->
+        <section id="add-product" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Add New Product</h1>
+                    <p>List a new product for sale</p>
+                </div>
+                <form class="product-form card floating-card" id="addProductForm">
+                    <div class="card__body">
+                        <div class="form-group">
+                            <label class="form-label">Product Name *</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Category *</label>
+                            <select class="form-control" name="category" required>
+                                <option value="">Select category</option>
+                                <option value="metals">Metals</option>
+                                <option value="plastics">Plastics</option>
+                                <option value="paper">Paper</option>
+                                <option value="electronics">Electronics</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Price (₹) *</label>
+                            <input type="number" class="form-control" name="price" min="1" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Stock Quantity *</label>
+                            <input type="number" class="form-control" name="stock" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Description *</label>
+                            <textarea class="form-control" rows="4" name="description" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                            <span class="btn-text">Add Product</span>
+                            <span class="btn-loading hidden">Adding...</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- ========================================
+             DEALER ORDERS SECTION - Order management for dealers
+             ======================================== -->
+        <section id="dealer-orders" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Orders Received</h1>
+                    <p>Manage orders for your products</p>
+                </div>
+                <div class="orders-list" id="dealerOrdersList">
+                    <!-- Dealer orders will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             DEALER PICKUPS SECTION - Pickup request management for dealers
+             ======================================== -->
+        <section id="dealer-pickups" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Pickup Requests</h1>
+                    <p>View pickup bookings in your area</p>
+                </div>
+                <div class="pickups-list" id="dealerPickupsList">
+                    <!-- Dealer pickups will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             ADMIN DASHBOARD SECTION - Platform overview for administrators
+             ======================================== -->
+        <section id="admin-dashboard" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Admin Dashboard</h1>
+                    <p>Platform overview and management</p>
+                </div>
+                <div class="dashboard-stats" id="adminStats">
+                    <!-- Admin statistics will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             USER MANAGEMENT SECTION - User administration for admins
+             ======================================== -->
+        <section id="user-management" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>User Management</h1>
+                    <p>Manage platform users</p>
+                    <button class="btn btn--primary" id="addUserBtn">Add New User</button>
+                </div>
+                <div class="users-management">
+                    <div class="users-table" id="usersTable">
+                        <!-- Users table will be dynamically loaded here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             PRODUCT MANAGEMENT SECTION - Product approval for admins
+             ======================================== -->
+        <section id="product-management" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Product Management</h1>
+                    <p>Approve/reject dealer product listings</p>
+                </div>
+                <div class="products-list" id="adminProductsList">
+                    <!-- Admin products will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             TRANSACTIONS SECTION - Transaction monitoring for admins
+             ======================================== -->
+        <section id="transactions" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>All Transactions</h1>
+                    <p>Monitor platform transactions</p>
+                </div>
+                <div class="transactions-list" id="transactionsList">
+                    <!-- Transactions will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             RATES MANAGEMENT SECTION - Rate setting for admins
+             ======================================== -->
+        <section id="rates-management" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Rates Management</h1>
+                    <p>Set and update scrap material rates</p>
+                </div>
+                <div class="rates-management" id="ratesManagement">
+                    <!-- Rates management interface will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             RATES SECTION - Public rates display
+             ======================================== -->
+        <section id="rates" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Current Scrap Rates</h1>
+                    <p>Updated daily market rates for different materials (per KG)</p>
+                </div>
+                <div class="rates-grid" id="ratesGrid">
+                    <!-- Rates will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             ABOUT SECTION - Company information and features
+             ======================================== -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>About EcoScrap</h1>
+                    <p>Making waste management sustainable and profitable</p>
+                </div>
+                <div class="about-content">
+                    <div class="features-grid">
+                        <div class="feature-card floating-card">
+                            <div class="feature-icon">♻️</div>
+                            <h3>Eco-Friendly</h3>
+                            <p>Help reduce waste and promote sustainable practices</p>
+                        </div>
+                        <div class="feature-card floating-card">
+                            <div class="feature-icon">💰</div>
+                            <h3>Fair Prices</h3>
+                            <p>Get the best market rates for your scrap materials</p>
+                        </div>
+                        <div class="feature-card floating-card">
+                            <div class="feature-icon">🚚</div>
+                            <h3>Easy Pickup</h3>
+                            <p>Convenient pickup service right from your doorstep</p>
+                        </div>
+                        <div class="feature-card floating-card">
+                            <div class="feature-icon">📱</div>
+                            <h3>Digital Platform</h3>
+                            <p>Modern, user-friendly platform for all your needs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             PROFILE SECTION - User account management
+             ======================================== -->
+        <section id="profile" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Profile Settings</h1>
+                    <p>Manage your account information</p>
+                </div>
+                <form class="profile-form card floating-card" id="profileForm">
+                    <div class="card__body">
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email *</label>
+                            <input type="email" class="form-control" name="email" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone *</label>
+                            <input type="tel" class="form-control" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Address *</label>
+                            <textarea class="form-control" rows="3" name="address" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                            <span class="btn-text">Update Profile</span>
+                            <span class="btn-loading hidden">Updating...</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================
+         MODAL DIALOGS
+         ======================================== -->
+    
+    <!-- Login Modal - User authentication -->
+    <div class="modal hidden" id="loginModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" class="form-control" name="email" required>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password *</label>
+                        <input type="password" class="form-control" name="password" required>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                        <span class="btn-text">Login</span>
+                        <span class="btn-loading hidden">Logging in...</span>
+                    </button>
+                    <!-- Demo account information for testing -->
+                    <p style="margin-top: 16px; text-align: center; color: var(--color-text-secondary); font-size: 12px;">
+                        Demo accounts:<br>
+                        Admin: admin@ecoscrap.com / admin123<br>
+                        Dealer: dealer1@ecoscrap.com / dealer123<br>
+                        Customer: customer1@ecoscrap.com / customer123
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal - New user registration -->
+    <div class="modal hidden" id="registerModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Register</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" class="form-control" name="name" required>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" class="form-control" name="email" required>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone *</label>
+                        <input type="tel" class="form-control" name="phone" pattern="[+]91[0-9]{10}" placeholder="+91XXXXXXXXXX" required>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Address *</label>
+                        <textarea class="form-control" rows="2" name="address" required></textarea>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Role *</label>
+                        <select class="form-control" name="role" required>
+                            <option value="customer">Customer</option>
+                            <option value="dealer">Dealer</option>
+                        </select>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password *</label>
+                        <input type="password" class="form-control" name="password" required minlength="6">
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password *</label>
+                        <input type="password" class="form-control" name="confirmPassword" required>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                        <span class="btn-text">Register</span>
+                        <span class="btn-loading hidden">Creating account...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add User Modal - Admin user creation -->
+    <div class="modal hidden" id="addUserModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New User</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addUserForm">
+                    <div class="form-group">
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" class="form-control" name="name" required>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" class="form-control" name="email" required>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone *</label>
+                        <input type="tel" class="form-control" name="phone" required>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Role *</label>
+                        <select class="form-control" name="role" required>
+                            <option value="customer">Customer</option>
+                            <option value="dealer">Dealer</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Address *</label>
+                        <textarea class="form-control" rows="2" name="address" required></textarea>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password *</label>
+                        <input type="password" class="form-control" name="password" required minlength="6">
+                        <div class="error-message hidden"></div>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                        <span class="btn-text">Add User</span>
+                        <span class="btn-loading hidden">Adding user...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal - Order completion and payment -->
+    <div class="modal hidden" id="checkoutModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h2>Checkout</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label class="form-label">Delivery Address *</label>
+                        <textarea class="form-control" rows="3" name="address" required></textarea>
+                        <div class="error-message hidden"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Payment Method *</label>
+                        <select class="form-control" name="payment" id="paymentMethod" required>
+                            <option value="">Select payment method</option>
+                            <option value="cod">Cash on Delivery</option>
+                            <option value="upi">UPI Payment</option>
+                            <option value="card">Credit/Debit Card</option>
+                            <option value="netbanking">Net Banking</option>
+                        </select>
+                        <div class="error-message hidden"></div>
+                    </div>
+
+                    <!-- Dynamic Payment Details - Shown based on payment method selection -->
+                    <div class="payment-details hidden" id="upiDetails">
+                        <h4>UPI Payment</h4>
+                        <div class="form-group">
+                            <label class="form-label">UPI ID *</label>
+                            <input type="text" class="form-control" name="upiId" placeholder="yourname@paytm">
+                        </div>
+                    </div>
+
+                    <div class="payment-details hidden" id="cardDetails">
+                        <h4>Card Payment</h4>
+                        <div class="form-group">
+                            <label class="form-label">Card Number *</label>
+                            <input type="text" class="form-control" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Expiry *</label>
+                                <input type="text" class="form-control" name="cardExpiry" placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">CVV *</label>
+                                <input type="text" class="form-control" name="cardCvv" placeholder="123" maxlength="3">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Cardholder Name *</label>
+                            <input type="text" class="form-control" name="cardName" placeholder="John Doe">
+                        </div>
+                    </div>
+
+                    <div class="payment-details hidden" id="netbankingDetails">
+                        <h4>Net Banking</h4>
+                        <div class="form-group">
+                            <label class="form-label">Select Bank *</label>
+                            <select class="form-control" name="bank">
+                                <option value="">Choose your bank</option>
+                                <option value="sbi">State Bank of India</option>
+                                <option value="hdfc">HDFC Bank</option>
+                                <option value="icici">ICICI Bank</option>
+                                <option value="axis">Axis Bank</option>
+                                <option value="kotak">Kotak Mahindra Bank</option>
+                                <option value="pnb">Punjab National Bank</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary - Dynamically populated -->
+                    <div id="orderSummary" class="order-summary">
+                        <!-- Order summary will be populated by JavaScript -->
+                    </div>
+                    
+                    <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                        <span class="btn-text">Place Order</span>
+                        <span class="btn-loading hidden">Processing...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Success Modal - Order confirmation -->
+    <div class="modal hidden" id="paymentSuccessModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Payment Successful!</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center; padding: 32px;">
+                <div style="font-size: 64px; color: var(--color-success); margin-bottom: 16px;">✅</div>
+                <h3>Order Placed Successfully</h3>
+                <p id="orderIdText">Order ID: #12345</p>
+                <p>You will receive a confirmation email shortly.</p>
+                <button class="btn btn--primary" onclick="closeModal(); showSection('orders');">View Orders</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         LOADING OVERLAY - Global loading indicator
+         ======================================== -->
+    <div class="loading-overlay hidden" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <!-- ========================================
+         JAVASCRIPT MODULES - Application functionality
+         ======================================== -->
+    <!-- Database operations and data management -->
+    <script src="js/modules/database.js"></script>
+    <!-- User authentication and authorization -->
+    <script src="js/modules/auth.js"></script>
+    <!-- Marketplace and product management -->
+    <script src="js/modules/marketplace.js"></script>
+    <!-- Pickup scheduling and management -->
+    <script src="js/modules/pickups.js"></script>
+    <!-- Dashboard and analytics -->
+    <script src="js/modules/dashboard.js"></script>
+    <!-- Content management and display -->
+    <script src="js/modules/content.js"></script>
+    <!-- User interface utilities and helpers -->
+    <script src="js/modules/ui.js"></script>
+    <!-- Core application logic and initialization -->
+    <script src="js/core/app.js"></script>
+    <!-- Main application entry point -->
+    <script src="js/main.js"></script>
+</body>
+</html>
