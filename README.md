@@ -261,9 +261,9 @@ FLASK_DEBUG=True
 ## 🧪 **Testing & Development**
 
 ### **Running Tests**
-```bash
+   ```bash
 # Navigate to backend directory
-cd ecoscrap
+   cd ecoscrap
 
 # Run all tests
 python3 -m pytest
@@ -276,7 +276,7 @@ python3 -m pytest --cov=app tests/
 ```
 
 ### **Code Quality**
-```bash
+   ```bash
 # Navigate to backend directory
 cd ecoscrap
 
@@ -291,7 +291,7 @@ mypy .
 ```
 
 ### **Development Server**
-```bash
+   ```bash
 # Navigate to backend directory
 cd ecoscrap
 
@@ -320,7 +320,7 @@ gunicorn app_modular:app
 ## 🚀 **Deployment**
 
 ### **Development**
-```bash
+   ```bash
 # Navigate to backend directory
 cd ecoscrap
 
@@ -332,7 +332,7 @@ FLASK_ENV=development python3 app_modular.py
 ```
 
 ### **Production**
-```bash
+   ```bash
 # Navigate to backend directory
 cd ecoscrap
 
