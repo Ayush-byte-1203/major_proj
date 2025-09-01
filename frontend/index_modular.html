@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoScrap - Sustainable Scrap Marketplace</title>
+    
+    <!-- ========================================
+         CSS IMPORTS
+         ========================================
+         
+         Main CSS file that imports all other stylesheets.
+         The CSS architecture follows a modular approach:
+         - main.css: Entry point and global styles
+         - base.css: Design system and variables
+         - components.css: Reusable UI components
+         - layout.css: Page structure and grid
+         - utilities.css: Helper classes and utilities
+         ======================================== -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- ========================================
+         MODULAR COMPONENT STRUCTURE
+         ========================================
+         
+         This index.html file now uses a modular approach where different
+         sections are loaded from separate component files. This provides:
+         
+         Benefits:
+         - Better code organization and maintainability
+         - Easier team collaboration on specific features
+         - Reusable components across different pages
+         - Cleaner main file structure
+         - Easier debugging and feature development
+         
+         Component Files:
+         - header.html: Navigation and user controls
+         - home.html: Landing page and pickup booking
+         - marketplace.html: Product browsing and shopping
+         - customer-sections.html: Customer-specific features
+         - dealer-sections.html: Dealer business management
+         - admin-sections.html: Platform administration
+         - public-sections.html: Public information pages
+         - profile.html: User account management
+         - modals.html: All modal dialogs and forms
+         - utilities.html: Loading states and JavaScript imports
+         
+         Each component is loaded using server-side includes or JavaScript
+         for dynamic loading based on user role and permissions.
+         ======================================== -->
+
+    <!-- ========================================
+         HEADER COMPONENT
+         ========================================
+         
+         Navigation header with role-based menus and user authentication.
+         This component handles all navigation logic and user state display.
+         ======================================== -->
+    <div id="header-component">
+        <!-- Header content will be loaded from components/header.html -->
+        <!-- This includes:
+             - Brand logo and navigation toggle
+             - Role-based navigation menus
+             - User authentication controls
+             - Responsive mobile navigation -->
+    </div>
+
+    <!-- ========================================
+         MAIN CONTENT AREA
+         ========================================
+         
+         The main content area contains all application sections that are
+         dynamically shown/hidden based on user navigation and permissions.
+         Each section is loaded from its respective component file.
+         ======================================== -->
+    <main class="main-content">
+        <!-- ========================================
+             HOME SECTION COMPONENT
+             ========================================
+             
+             Main landing page for guests and customers.
+             Includes hero section, pickup booking, and current rates.
+             ======================================== -->
+        <div id="home-component">
+            <!-- Home content will be loaded from components/home.html -->
+        </div>
+
+        <!-- ========================================
+             MARKETPLACE SECTION COMPONENT
+             ========================================
+             
+             Customer shopping area with product browsing, search,
+             and filtering capabilities.
+             ======================================== -->
+        <div id="marketplace-component">
+            <!-- Marketplace content will be loaded from components/marketplace.html -->
+        </div>
+
+        <!-- ========================================
+             CUSTOMER SECTIONS COMPONENT
+             ========================================
+             
+             All customer-specific functionality including:
+             - Shopping cart management
+             - Order history and tracking
+             - Pickup request management
+             - Educational tips and guides
+             ======================================== -->
+        <div id="customer-sections-component">
+            <!-- Customer sections will be loaded from components/customer-sections.html -->
+        </div>
+
+        <!-- ========================================
+             DEALER SECTIONS COMPONENT
+             ========================================
+             
+             All dealer-specific functionality including:
+             - Business dashboard with statistics
+             - Product management and listing
+             - Order fulfillment and management
+             - Pickup request handling
+             ======================================== -->
+        <div id="dealer-sections-component">
+            <!-- Dealer sections will be loaded from components/dealer-sections.html -->
+        </div>
+
+        <!-- ========================================
+             ADMIN SECTIONS COMPONENT
+             ========================================
+             
+             All admin-specific functionality including:
+             - Platform overview dashboard
+             - User management and administration
+             - Product approval and moderation
+             - Transaction monitoring
+             - Rate management and platform settings
+             ======================================== -->
+        <div id="admin-sections-component">
+            <!-- Admin sections will be loaded from components/admin-sections.html -->
+        </div>
+
+        <!-- ========================================
+             PUBLIC SECTIONS COMPONENT
+             ========================================
+             
+             Public-facing sections visible to all users:
+             - Current scrap rates display
+             - About page with company information
+             - Public features and benefits
+             ======================================== -->
+        <div id="public-sections-component">
+            <!-- Public sections will be loaded from components/public-sections.html -->
+        </div>
+
+        <!-- ========================================
+             PROFILE SECTION COMPONENT
+             ========================================
+             
+             User account management and profile settings.
+             Visible to all authenticated users regardless of role.
+             ======================================== -->
+        <div id="profile-component">
+            <!-- Profile content will be loaded from components/profile.html -->
+        </div>
+    </main>
+
+    <!-- ========================================
+         MODAL DIALOGS COMPONENT
+         ========================================
+         
+         All modal dialogs used throughout the application:
+         - User authentication (login/register)
+         - User management (add user for admins)
+         - Checkout and payment processing
+         - Success confirmations and notifications
+         ======================================== -->
+    <div id="modals-component">
+        <!-- Modal dialogs will be loaded from components/modals.html -->
+    </div>
+
+    <!-- ========================================
+         UTILITIES COMPONENT
+         ========================================
+         
+         Utility elements and JavaScript module includes:
+         - Global loading overlay for user feedback
+         - JavaScript module imports for application functionality
+         - Loading states and progress indicators
+         ======================================== -->
+    <div id="utilities-component">
+        <!-- Utilities will be loaded from components/utilities.html -->
+    </div>
+
+    <!-- ========================================
+         COMPONENT LOADER SCRIPT
+         ========================================
+         
+         This script handles the dynamic loading of all component files
+         and manages the modular structure of the application.
+         
+         Features:
+         - Loads components based on user role and permissions
+         - Manages component visibility and state
+         - Handles component dependencies and loading order
+         - Provides fallback content if components fail to load
+         ======================================== -->
+    <script>
+        // Component loading and management system
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔄 Loading EcoScrap modular components...');
+            
+            // Component loading configuration
+            const components = {
+                'header-component': 'components/header.html',
+                'home-component': 'components/home.html',
+                'marketplace-component': 'components/marketplace.html',
+                'customer-sections-component': 'components/customer-sections.html',
+                'dealer-sections-component': 'components/dealer-sections.html',
+                'admin-sections-component': 'components/admin-sections.html',
+                'public-sections-component': 'components/public-sections.html',
+                'profile-component': 'components/profile.html',
+                'modals-component': 'components/modals.html',
+                'utilities-component': 'components/utilities.html'
+            };
+            
+            // Load all components
+            Object.entries(components).forEach(([componentId, componentPath]) => {
+                loadComponent(componentId, componentPath);
+            });
+            
+            console.log('✅ All components loaded successfully!');
+        });
+        
+        // Component loading function
+        async function loadComponent(componentId, componentPath) {
+            try {
+                const response = await fetch(componentPath);
+                if (response.ok) {
+                    const content = await response.text();
+                    document.getElementById(componentId).innerHTML = content;
+                    console.log(`✅ Loaded component: ${componentPath}`);
+                } else {
+                    throw new Error(`Failed to load ${componentPath}: ${response.status}`);
+                }
+            } catch (error) {
+                console.error(`❌ Error loading component ${componentPath}:`, error);
+                // Show fallback content
+                document.getElementById(componentId).innerHTML = `
+                    <div class="component-error">
+                        <h3>Component Loading Error</h3>
+                        <p>Failed to load: ${componentPath}</p>
+                        <button onclick="loadComponent('${componentId}', '${componentPath}')">Retry</button>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

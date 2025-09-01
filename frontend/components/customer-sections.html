@@ -1,0 +1,111 @@
+<!-- ========================================
+     CUSTOMER SECTIONS COMPONENT
+     ========================================
+     
+     This component contains all customer-specific functionality sections:
+     - Shopping cart management
+     - Order history and tracking
+     - Pickup request management
+     - Educational tips and guides
+     
+     These sections are only visible to authenticated customers and provide
+     the core functionality for scrap selling and material purchasing.
+     ======================================== -->
+
+<!-- ========================================
+     CART SECTION - Shopping cart management
+     ======================================== -->
+<section id="cart" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Shopping Cart</h1>
+            <p>Review your selected items</p>
+        </div>
+        <div class="cart-content" id="cartContent">
+            <!-- Cart items will be dynamically loaded here by JavaScript -->
+            <!-- Each cart item shows:
+                 - Product details (name, price, quantity)
+                 - Quantity adjustment controls
+                 - Remove item option
+                 - Subtotal calculation -->
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     ORDERS SECTION - Customer order history
+     ======================================== -->
+<section id="orders" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>My Orders</h1>
+            <p>Track your purchase history</p>
+        </div>
+        <div class="orders-list" id="ordersList">
+            <!-- Orders will be dynamically loaded here by JavaScript -->
+            <!-- Each order displays:
+                 - Order ID and date
+                 - Product details and quantities
+                 - Total amount paid
+                 - Order status (pending, delivered, etc.)
+                 - Delivery tracking information -->
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     PICKUPS SECTION - Customer pickup tracking
+     ======================================== -->
+<section id="pickups" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>My Pickups</h1>
+            <p>Track your pickup requests</p>
+        </div>
+        <div class="pickups-list" id="pickupsList">
+            <!-- Pickups will be dynamically loaded here by JavaScript -->
+            <!-- Each pickup shows:
+                 - Pickup ID and scheduled date/time
+                 - Material type and estimated weight
+                 - Pickup address
+                 - Status (scheduled, in-progress, completed)
+                 - Estimated value and payment status -->
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     TIPS & GUIDES SECTION - Educational content for customers
+     ======================================== -->
+<section id="tips" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Tips & Guides</h1>
+            <p>Expert advice to maximize your scrap value and help the environment</p>
+        </div>
+        
+        <!-- Tips Category Filter - Organize tips by topic for easy navigation -->
+        <div class="tips-filters">
+            <select class="form-control filter-select" id="categoryTipsFilter">
+                <option value="">All Categories</option>
+                <option value="Preparation">Preparation</option>
+                <option value="Rates">Rates</option>
+                <option value="Safety">Safety</option>
+                <option value="Environment">Environment</option>
+                <option value="Identification">Identification</option>
+                <option value="Storage">Storage</option>
+            </select>
+        </div>
+
+        <!-- Tips Grid - Dynamically populated with educational content -->
+        <div class="tips-grid" id="tipsGrid">
+            <!-- Tips will be dynamically loaded here by JavaScript -->
+            <!-- Each tip card contains:
+                 - Category icon and title
+                 - Tip description and benefits
+                 - Difficulty level indicator
+                 - Estimated time to implement
+                 - Environmental impact rating -->
+        </div>
+    </div>
+</section>

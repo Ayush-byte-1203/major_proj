@@ -1,0 +1,322 @@
+<!-- ========================================
+     MODAL DIALOGS COMPONENT
+     ========================================
+     
+     This component contains all modal dialogs used throughout the application:
+     - User authentication (login/register)
+     - User management (add user for admins)
+     - Checkout and payment processing
+     - Success confirmations and notifications
+     
+     Modals provide focused user interactions without navigating away from
+     the current page context.
+     ======================================== -->
+
+<!-- ========================================
+     LOGIN MODAL - User authentication
+     ======================================== -->
+<div class="modal hidden" id="loginModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Login</h2>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="loginForm">
+                <!-- Email Input - User account identifier -->
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" class="form-control" name="email" required>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Password Input - Account security -->
+                <div class="form-group">
+                    <label class="form-label">Password *</label>
+                    <input type="password" class="form-control" name="password" required>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Login Button - Form submission with loading state -->
+                <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                    <span class="btn-text">Login</span>
+                    <span class="btn-loading hidden">Logging in...</span>
+                </button>
+                
+                <!-- Demo Account Information - Testing and demonstration purposes -->
+                <p style="margin-top: 16px; text-align: center; color: var(--color-text-secondary); font-size: 12px;">
+                    Demo accounts:<br>
+                    Admin: admin@ecoscrap.com / admin123<br>
+                    Dealer: dealer1@ecoscrap.com / dealer123<br>
+                    Customer: customer1@ecoscrap.com / customer123
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================
+     REGISTER MODAL - New user registration
+     ======================================== -->
+<div class="modal hidden" id="registerModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Register</h2>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="registerForm">
+                <!-- Personal Information - User identification -->
+                <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-control" name="name" required>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Email Address - Account creation identifier -->
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" class="form-control" name="email" required>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Contact Information - Communication details -->
+                <div class="form-group">
+                    <label class="form-label">Phone *</label>
+                    <input type="tel" class="form-control" name="phone" pattern="[+]91[0-9]{10}" placeholder="+91XXXXXXXXXX" required>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Address Information - Location for services -->
+                <div class="form-group">
+                    <label class="form-label">Address *</label>
+                    <textarea class="form-control" rows="2" name="address" required></textarea>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Role Selection - User type determination -->
+                <div class="form-group">
+                    <label class="form-label">Role *</label>
+                    <select class="form-control" name="role" required>
+                        <option value="customer">Customer</option>
+                        <option value="dealer">Dealer</option>
+                    </select>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Password Creation - Account security -->
+                <div class="form-group">
+                    <label class="form-label">Password *</label>
+                    <input type="password" class="form-control" name="password" required minlength="6">
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Password Confirmation - Security verification -->
+                <div class="form-group">
+                    <label class="form-label">Confirm Password *</label>
+                    <input type="password" class="form-control" name="confirmPassword" required>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Registration Button - Account creation with loading state -->
+                <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                    <span class="btn-text">Register</span>
+                    <span class="btn-loading hidden">Creating account...</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================
+     ADD USER MODAL - Admin user creation
+     ======================================== -->
+<div class="modal hidden" id="addUserModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Add New User</h2>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="addUserForm">
+                <!-- User Information - Basic details for new account -->
+                <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-control" name="name" required>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Email Address - Account identifier -->
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" class="form-control" name="email" required>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Contact Information - Communication details -->
+                <div class="form-group">
+                    <label class="form-label">Phone *</label>
+                    <input type="tel" class="form-control" name="phone" required>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Role Assignment - User type and permissions -->
+                <div class="form-group">
+                    <label class="form-label">Role *</label>
+                    <select class="form-control" name="role" required>
+                        <option value="customer">Customer</option>
+                        <option value="dealer">Dealer</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Address Information - Location details -->
+                <div class="form-group">
+                    <label class="form-label">Address *</label>
+                    <textarea class="form-control" rows="2" name="address" required></textarea>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Password Creation - Initial account security -->
+                <div class="form-group">
+                    <label class="form-label">Password *</label>
+                    <input type="password" class="form-control" name="password" required minlength="6">
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- User Creation Button - Account setup with loading state -->
+                <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                    <span class="btn-text">Add User</span>
+                    <span class="btn-loading hidden">Adding user...</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================
+     CHECKOUT MODAL - Order completion and payment
+     ======================================== -->
+<div class="modal hidden" id="checkoutModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content large-modal">
+        <div class="modal-header">
+            <h2>Checkout</h2>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="checkoutForm">
+                <!-- Delivery Address - Shipping location -->
+                <div class="form-group">
+                    <label class="form-label">Delivery Address *</label>
+                    <textarea class="form-control" rows="3" name="address" required></textarea>
+                    <div class="error-message hidden"></div>
+                </div>
+                
+                <!-- Payment Method Selection - Transaction processing -->
+                <div class="form-group">
+                    <label class="form-label">Payment Method *</label>
+                    <select class="form-control" name="payment" id="paymentMethod" required>
+                        <option value="">Select payment method</option>
+                        <option value="cod">Cash on Delivery</option>
+                        <option value="upi">UPI Payment</option>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="netbanking">Net Banking</option>
+                    </select>
+                    <div class="error-message hidden"></div>
+                </div>
+
+                <!-- Dynamic Payment Details - Shown based on payment method selection -->
+                
+                <!-- UPI Payment Details -->
+                <div class="payment-details hidden" id="upiDetails">
+                    <h4>UPI Payment</h4>
+                    <div class="form-group">
+                        <label class="form-label">UPI ID *</label>
+                        <input type="text" class="form-control" name="upiId" placeholder="yourname@paytm">
+                    </div>
+                </div>
+
+                <!-- Card Payment Details -->
+                <div class="payment-details hidden" id="cardDetails">
+                    <h4>Card Payment</h4>
+                    <div class="form-group">
+                        <label class="form-label">Card Number *</label>
+                        <input type="text" class="form-control" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Expiry *</label>
+                            <input type="text" class="form-control" name="cardExpiry" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">CVV *</label>
+                            <input type="text" class="form-control" name="cardCvv" placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Cardholder Name *</label>
+                        <input type="text" class="form-control" name="cardName" placeholder="John Doe">
+                    </div>
+                </div>
+
+                <!-- Net Banking Details -->
+                <div class="payment-details hidden" id="netbankingDetails">
+                    <h4>Net Banking</h4>
+                    <div class="form-group">
+                        <label class="form-label">Select Bank *</label>
+                        <select class="form-control" name="bank">
+                            <option value="">Choose your bank</option>
+                            <option value="sbi">State Bank of India</option>
+                            <option value="hdfc">HDFC Bank</option>
+                            <option value="icici">ICICI Bank</option>
+                            <option value="axis">Axis Bank</option>
+                            <option value="kotak">Kotak Mahindra Bank</option>
+                            <option value="pnb">Punjab National Bank</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Order Summary - Dynamically populated with cart contents -->
+                <div id="orderSummary" class="order-summary">
+                    <!-- Order summary will be populated by JavaScript -->
+                </div>
+                
+                <!-- Order Placement Button - Final submission with loading state -->
+                <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                    <span class="btn-text">Place Order</span>
+                    <span class="btn-loading hidden">Processing...</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================
+     PAYMENT SUCCESS MODAL - Order confirmation
+     ======================================== -->
+<div class="modal hidden" id="paymentSuccessModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Payment Successful!</h2>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body" style="text-align: center; padding: 32px;">
+            <!-- Success Icon - Visual confirmation -->
+            <div style="font-size: 64px; color: var(--color-success); margin-bottom: 16px;">✅</div>
+            
+            <!-- Success Message - Order confirmation details -->
+            <h3>Order Placed Successfully</h3>
+            <p id="orderIdText">Order ID: #12345</p>
+            <p>You will receive a confirmation email shortly.</p>
+            
+            <!-- Navigation Button - Continue to orders section -->
+            <button class="btn btn--primary" onclick="closeModal(); showSection('orders');">View Orders</button>
+        </div>
+    </div>
+</div>

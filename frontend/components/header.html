@@ -1,0 +1,100 @@
+<!-- ========================================
+     HEADER & NAVIGATION COMPONENT
+     ========================================
+     
+     This component handles the main navigation and header of the EcoScrap application.
+     It includes:
+     - Brand logo and navigation toggle
+     - Role-based navigation menus (Guest, Customer, Dealer, Admin)
+     - User authentication controls
+     - Responsive mobile navigation
+     
+     The navigation dynamically changes based on user authentication status and role.
+     ======================================== -->
+
+<header class="header">
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Brand Logo - Clickable to return to home -->
+            <div class="nav-brand">
+                <h2>EcoScrap</h2>
+            </div>
+
+            <!-- Mobile Menu Toggle Button - Hamburger Menu for responsive design -->
+            <button class="nav-toggle" id="navToggle">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <!-- Role-based Navigation Menu - Different menus for different user types -->
+            <div class="nav-menu" id="navMenu">
+                <!-- Guest Navigation - Visible when user is not logged in -->
+                <div id="guestNav" class="nav-group">
+                    <a href="#" class="nav-link active" data-section="home">Home</a>
+                    <a href="#" class="nav-link" data-section="rates">Rates</a>
+                    <a href="#" class="nav-link" data-section="about">About</a>
+                </div>
+
+                <!-- Customer Navigation - Visible when customer is logged in -->
+                <div id="customerNav" class="nav-group hidden">
+                    <a href="#" class="nav-link active" data-section="home">Home</a>
+                    <a href="#" class="nav-link" data-section="marketplace">Marketplace</a>
+                    <a href="#" class="nav-link" data-section="cart">Cart (<span id="cartCount">0</span>)</a>
+                    <a href="#" class="nav-link" data-section="orders">My Orders</a>
+                    <a href="#" class="nav-link" data-section="pickups">My Pickups</a>
+                    <a href="#" class="nav-link" data-section="rates">Rates</a>
+                    <a href="#" class="nav-link" data-section="tips">Tips & Guides</a>
+                    <a href="#" class="nav-link" data-section="profile">Profile</a>
+                </div>
+
+                <!-- Dealer Navigation - Visible when dealer is logged in -->
+                <div id="dealerNav" class="nav-group hidden">
+                    <a href="#" class="nav-link active" data-section="dashboard">Dashboard</a>
+                    <a href="#" class="nav-link" data-section="my-products">My Products</a>
+                    <a href="#" class="nav-link" data-section="add-product">Add Product</a>
+                    <a href="#" class="nav-link" data-section="dealer-orders">Orders</a>
+                    <a href="#" class="nav-link" data-section="dealer-pickups">Pickups</a>
+                    <a href="#" class="nav-link" data-section="profile">Profile</a>
+                </div>
+
+                <!-- Admin Navigation - Visible when admin is logged in -->
+                <div id="adminNav" class="nav-group hidden">
+                    <a href="#" class="nav-link active" data-section="admin-dashboard">Dashboard</a>
+                    <a href="#" class="nav-link" data-section="user-management">Users</a>
+                    <a href="#" class="nav-link" data-section="product-management">Products</a>
+                    <a href="#" class="nav-link" data-section="transactions">Transactions</a>
+                    <a href="#" class="nav-link" data-section="rates-management">Rates</a>
+                    <a href="#" class="nav-link" data-section="profile">Profile</a>
+                </div>
+            </div>
+
+            <!-- User Actions Section - Login/Register buttons and user profile -->
+            <div class="nav-actions">
+                <div class="user-menu" id="userMenu">
+                    <!-- User Logged Out State - Shows login/register buttons -->
+                    <div class="user-logged-out">
+                        <button class="btn btn--outline btn--sm" id="loginBtn">Login</button>
+                        <button class="btn btn--primary btn--sm" id="registerBtn">Register</button>
+                    </div>
+                    <!-- User Logged In State - Shows user profile dropdown -->
+                    <div class="user-logged-in hidden">
+                        <div class="user-dropdown">
+                            <button class="user-profile-btn">
+                                <span class="user-avatar">JD</span>
+                                <span class="user-name">John Doe</span>
+                            </button>
+                            <div class="user-dropdown-menu">
+                                <div class="user-role-badge">
+                                    <span id="userRoleBadge">Customer</span>
+                                </div>
+                                <hr>
+                                <a href="#" class="dropdown-link" id="logoutBtn">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

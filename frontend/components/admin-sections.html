@@ -1,0 +1,136 @@
+<!-- ========================================
+     ADMIN SECTIONS COMPONENT
+     ========================================
+     
+     This component contains all admin-specific functionality sections:
+     - Platform overview dashboard
+     - User management and administration
+     - Product approval and moderation
+     - Transaction monitoring
+     - Rate management and platform settings
+     
+     These sections are only visible to authenticated administrators and provide
+     comprehensive platform management capabilities.
+     ======================================== -->
+
+<!-- ========================================
+     ADMIN DASHBOARD SECTION - Platform overview for administrators
+     ======================================== -->
+<section id="admin-dashboard" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Admin Dashboard</h1>
+            <p>Platform overview and management</p>
+        </div>
+        
+        <!-- Admin Statistics - Platform-wide metrics and performance indicators -->
+        <div class="dashboard-stats" id="adminStats">
+            <!-- Admin statistics will be dynamically loaded here by JavaScript -->
+            <!-- Statistics include:
+                 - Total users (customers, dealers, admins)
+                 - Total products and transactions
+                 - Platform revenue and growth metrics
+                 - Pending approvals and issues
+                 - System health and performance -->
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     USER MANAGEMENT SECTION - User administration for admins
+     ======================================== -->
+<section id="user-management" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>User Management</h1>
+            <p>Manage platform users</p>
+            <!-- Add User Button - Quick access to user creation -->
+            <button class="btn btn--primary" id="addUserBtn">Add New User</button>
+        </div>
+        
+        <!-- Users Management Interface - Comprehensive user administration -->
+        <div class="users-management">
+            <!-- Users Table - All platform users with management options -->
+            <div class="users-table" id="usersTable">
+                <!-- Users table will be dynamically loaded here by JavaScript -->
+                <!-- Each user row shows:
+                     - User ID and basic information
+                     - Role and account status
+                     - Registration date and last activity
+                     - Edit, suspend, and delete options
+                     - Account verification status -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     PRODUCT MANAGEMENT SECTION - Product approval for admins
+     ======================================== -->
+<section id="product-management" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Product Management</h1>
+            <p>Approve/reject dealer product listings</p>
+        </div>
+        
+        <!-- Products List - All products pending approval or requiring moderation -->
+        <div class="products-list" id="adminProductsList">
+            <!-- Admin products will be dynamically loaded here by JavaScript -->
+            <!-- Each product shows:
+                 - Product details and dealer information
+                 - Submission date and current status
+                 - Approve/reject action buttons
+                 - Moderation notes and history
+                 - Quality and compliance indicators -->
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     TRANSACTIONS SECTION - Transaction monitoring for admins
+     ======================================== -->
+<section id="transactions" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>All Transactions</h1>
+            <p>Monitor platform transactions</p>
+        </div>
+        
+        <!-- Transactions List - Complete transaction history and monitoring -->
+        <div class="transactions-list" id="transactionsList">
+            <!-- Transactions will be dynamically loaded here by JavaScript -->
+            <!-- Each transaction shows:
+                 - Transaction ID and timestamp
+                 - Customer and dealer information
+                 - Product details and amounts
+                 - Payment status and method
+                 - Commission and platform fees
+                 - Dispute or refund status -->
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     RATES MANAGEMENT SECTION - Rate setting for admins
+     ======================================== -->
+<section id="rates-management" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Rates Management</h1>
+            <p>Set and update scrap material rates</p>
+        </div>
+        
+        <!-- Rates Management Interface - Dynamic rate configuration -->
+        <div class="rates-management" id="ratesManagement">
+            <!-- Rates management interface will be dynamically loaded here by JavaScript -->
+            <!-- Interface includes:
+                 - Current rate display for all materials
+                 - Rate editing forms with validation
+                 - Historical rate tracking and trends
+                 - Bulk rate update capabilities
+                 - Rate change approval workflow
+                 - Market analysis and recommendations -->
+        </div>
+    </div>
+</section>

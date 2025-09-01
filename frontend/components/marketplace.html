@@ -1,0 +1,49 @@
+<!-- ========================================
+     MARKETPLACE SECTION COMPONENT
+     ========================================
+     
+     This component handles the customer shopping experience in the EcoScrap marketplace.
+     It includes:
+     - Product search and category filtering
+     - Dynamic product grid display
+     - Product browsing interface
+     - Responsive product layout
+     
+     Products are loaded dynamically from the backend and can be filtered by category
+     or searched by name/description.
+     ======================================== -->
+
+<section id="marketplace" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Marketplace</h1>
+            <p>Buy recycled materials from verified dealers</p>
+        </div>
+
+        <!-- Search and Filter Controls - User interface for finding specific products -->
+        <div class="marketplace-filters">
+            <!-- Category Filter - Dropdown to filter products by material type -->
+            <select class="form-control filter-select" id="categoryFilter">
+                <option value="">All Categories</option>
+                <option value="metals">Metals</option>
+                <option value="plastics">Plastics</option>
+                <option value="paper">Paper</option>
+                <option value="electronics">Electronics</option>
+            </select>
+            
+            <!-- Search Input - Text search across product names and descriptions -->
+            <input type="text" class="form-control" placeholder="Search products..." id="searchInput">
+        </div>
+
+        <!-- Products Grid - Dynamically populated container for product display -->
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be dynamically loaded here by JavaScript -->
+            <!-- Each product card includes:
+                 - Product image/icon
+                 - Product name and description
+                 - Price and stock information
+                 - Add to cart button
+                 - Product details link -->
+        </div>
+    </div>
+</section>

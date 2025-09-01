@@ -1,0 +1,109 @@
+<!-- ========================================
+     HOME SECTION COMPONENT
+     ========================================
+     
+     This component represents the main landing page for guests and customers.
+     It includes:
+     - Hero section with call-to-action buttons
+     - Quick pickup booking form for immediate service
+     - Current scrap rates display
+     - Animated sections for better user engagement
+     
+     The pickup form calculates estimated value based on material type and weight.
+     ======================================== -->
+
+<section id="home" class="section active">
+    <!-- Hero Section - Main banner with call-to-action -->
+    <div class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="typing-text">Turn Your Scrap Into Cash</h1>
+                <p class="fade-in-up">Join the sustainable marketplace where your waste becomes someone else's resource</p>
+                <div class="hero-actions fade-in-up">
+                    <button class="btn btn--primary btn--lg" id="heroBookPickup">Book Pickup</button>
+                    <button class="btn btn--outline btn--lg" data-section="marketplace">Explore Marketplace</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pickup Booking Form - Quick pickup scheduling for customers -->
+    <div class="container animated-section" id="pickupSection">
+        <div class="section-header">
+            <h2>Book a Pickup</h2>
+            <p>Schedule a pickup for your scrap materials</p>
+        </div>
+        <form class="pickup-form card floating-card" id="quickPickupForm">
+            <div class="card__body">
+                <!-- Material and Weight Selection - Core pickup information -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Material Type *</label>
+                        <select class="form-control" name="material" required>
+                            <option value="">Select material</option>
+                            <option value="aluminum">Aluminum</option>
+                            <option value="copper">Copper</option>
+                            <option value="steel">Steel</option>
+                            <option value="brass">Brass</option>
+                            <option value="iron">Iron</option>
+                            <option value="plastic">Plastic</option>
+                            <option value="cardboard">Cardboard</option>
+                            <option value="newspaper">Newspaper</option>
+                            <option value="electronics">Electronics</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Weight (KG) *</label>
+                        <input type="number" class="form-control" name="weight" min="1" max="1000" required>
+                    </div>
+                </div>
+                
+                <!-- Date and Time Selection - Scheduling preferences -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Pickup Date *</label>
+                        <input type="date" class="form-control" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Time Slot *</label>
+                        <select class="form-control" name="time" required>
+                            <option value="">Select time</option>
+                            <option value="09:00-12:00">9:00 AM - 12:00 PM</option>
+                            <option value="12:00-15:00">12:00 PM - 3:00 PM</option>
+                            <option value="15:00-18:00">3:00 PM - 6:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Address Input - Pickup location -->
+                <div class="form-group">
+                    <label class="form-label">Address *</label>
+                    <textarea class="form-control" rows="2" name="address" required></textarea>
+                </div>
+                
+                <!-- Estimated Value Display - Calculated dynamically based on material and weight -->
+                <div id="estimatedValue" class="estimated-price hidden">
+                    <h4>Estimated Value: ₹<span id="estimatedAmount">0</span></h4>
+                </div>
+                
+                <!-- Submit Button with Loading State - User feedback during form submission -->
+                <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                    <span class="btn-text">Book Pickup</span>
+                    <span class="btn-loading hidden">Booking...</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Current Rates Section - Display today's market rates for transparency -->
+    <div class="container animated-section">
+        <div class="section-header">
+            <h2>Current Scrap Rates</h2>
+            <p>Today's market rates for different materials</p>
+        </div>
+        <div class="rates-grid" id="homeRatesGrid">
+            <!-- Rates will be dynamically loaded here by JavaScript -->
+            <!-- This section shows real-time pricing to help users estimate their scrap value -->
+        </div>
+    </div>
+</section>

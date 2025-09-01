@@ -1,0 +1,59 @@
+<!-- ========================================
+     PROFILE SECTION COMPONENT
+     ========================================
+     
+     This component handles user account management and profile settings.
+     It includes:
+     - User information display and editing
+     - Profile update form with validation
+     - Account settings and preferences
+     - Security and privacy options
+     
+     This section is visible to all authenticated users regardless of their role
+     and allows them to manage their personal information and account settings.
+     ======================================== -->
+
+<section id="profile" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Profile Settings</h1>
+            <p>Manage your account information</p>
+        </div>
+        
+        <!-- Profile Form - User information editing and management -->
+        <form class="profile-form card floating-card" id="profileForm">
+            <div class="card__body">
+                <!-- Personal Information - Basic user details -->
+                <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-control" name="name" required>
+                </div>
+                
+                <!-- Email Address - Account identifier (read-only for security) -->
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" class="form-control" name="email" required readonly>
+                    <!-- Email is read-only to prevent account hijacking -->
+                </div>
+                
+                <!-- Contact Information - Phone number for communication -->
+                <div class="form-group">
+                    <label class="form-label">Phone *</label>
+                    <input type="tel" class="form-control" name="phone" required>
+                </div>
+                
+                <!-- Address Information - Location for pickup and delivery -->
+                <div class="form-group">
+                    <label class="form-label">Address *</label>
+                    <textarea class="form-control" rows="3" name="address" required></textarea>
+                </div>
+                
+                <!-- Form Submission - Update profile with loading state -->
+                <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                    <span class="btn-text">Update Profile</span>
+                    <span class="btn-loading hidden">Updating...</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

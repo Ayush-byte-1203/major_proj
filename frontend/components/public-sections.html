@@ -1,0 +1,81 @@
+<!-- ========================================
+     PUBLIC SECTIONS COMPONENT
+     ========================================
+     
+     This component contains all public-facing sections that are visible to all users:
+     - Current scrap rates display
+     - About page with company information
+     - Public features and benefits
+     
+     These sections provide information and transparency to all visitors
+     regardless of their authentication status.
+     ======================================== -->
+
+<!-- ========================================
+     RATES SECTION - Public rates display
+     ======================================== -->
+<section id="rates" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Current Scrap Rates</h1>
+            <p>Updated daily market rates for different materials (per KG)</p>
+        </div>
+        
+        <!-- Rates Grid - Dynamic display of current market rates -->
+        <div class="rates-grid" id="ratesGrid">
+            <!-- Rates will be dynamically loaded here by JavaScript -->
+            <!-- Each rate card shows:
+                 - Material type and icon
+                 - Current price per kilogram
+                 - Price change indicator (up/down)
+                 - Last updated timestamp
+                 - Quality grade information -->
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     ABOUT SECTION - Company information and features
+     ======================================== -->
+<section id="about" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>About EcoScrap</h1>
+            <p>Making waste management sustainable and profitable</p>
+        </div>
+        
+        <!-- About Content - Company overview and value proposition -->
+        <div class="about-content">
+            <!-- Features Grid - Key platform benefits and capabilities -->
+            <div class="features-grid">
+                <!-- Eco-Friendly Feature - Environmental impact -->
+                <div class="feature-card floating-card">
+                    <div class="feature-icon">♻️</div>
+                    <h3>Eco-Friendly</h3>
+                    <p>Help reduce waste and promote sustainable practices</p>
+                </div>
+                
+                <!-- Fair Prices Feature - Economic benefits -->
+                <div class="feature-card floating-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Fair Prices</h3>
+                    <p>Get the best market rates for your scrap materials</p>
+                </div>
+                
+                <!-- Easy Pickup Feature - Convenience -->
+                <div class="feature-card floating-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Easy Pickup</h3>
+                    <p>Convenient pickup service right from your doorstep</p>
+                </div>
+                
+                <!-- Digital Platform Feature - Technology -->
+                <div class="feature-card floating-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Digital Platform</h3>
+                    <p>Modern, user-friendly platform for all your needs</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

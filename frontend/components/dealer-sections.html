@@ -1,0 +1,169 @@
+<!-- ========================================
+     DEALER SECTIONS COMPONENT
+     ========================================
+     
+     This component contains all dealer-specific functionality sections:
+     - Business dashboard with statistics
+     - Product management and listing
+     - Order fulfillment and management
+     - Pickup request handling
+     
+     These sections are only visible to authenticated dealers and provide
+     the tools needed to manage their scrap business operations.
+     ======================================== -->
+
+<!-- ========================================
+     DEALER DASHBOARD SECTION - Business overview for dealers
+     ======================================== -->
+<section id="dashboard" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Dealer Dashboard</h1>
+            <p>Manage your business operations</p>
+        </div>
+        
+        <!-- Dashboard Statistics - Key business metrics and performance indicators -->
+        <div class="dashboard-stats" id="dealerStats">
+            <!-- Dealer statistics will be dynamically loaded here by JavaScript -->
+            <!-- Statistics include:
+                 - Total products listed
+                 - Active orders count
+                 - Monthly revenue
+                 - Customer ratings
+                 - Pickup requests in area -->
+        </div>
+        
+        <!-- Dashboard Actions - Quick access to common dealer tasks -->
+        <div class="dashboard-actions">
+            <button class="btn btn--primary" data-section="add-product">Add New Product</button>
+            <button class="btn btn--outline" data-section="dealer-orders">View Orders</button>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     DEALER PRODUCTS SECTION - Product management for dealers
+     ======================================== -->
+<section id="my-products" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>My Products</h1>
+            <p>Manage your product listings</p>
+        </div>
+        
+        <!-- Products List - All dealer's listed products with management options -->
+        <div class="products-list" id="dealerProductsList">
+            <!-- Dealer products will be dynamically loaded here by JavaScript -->
+            <!-- Each product shows:
+                 - Product details and current stock
+                 - Edit and delete options
+                 - Sales performance metrics
+                 - Approval status (if applicable)
+                 - Quick stock update controls -->
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     ADD PRODUCT SECTION - Product creation form for dealers
+     ======================================== -->
+<section id="add-product" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Add New Product</h1>
+            <p>List a new product for sale</p>
+        </div>
+        
+        <!-- Product Creation Form - Comprehensive form for new product listings -->
+        <form class="product-form card floating-card" id="addProductForm">
+            <div class="card__body">
+                <!-- Product Basic Information -->
+                <div class="form-group">
+                    <label class="form-label">Product Name *</label>
+                    <input type="text" class="form-control" name="name" required>
+                </div>
+                
+                <!-- Product Category - Material type classification -->
+                <div class="form-group">
+                    <label class="form-label">Category *</label>
+                    <select class="form-control" name="category" required>
+                        <option value="">Select category</option>
+                        <option value="metals">Metals</option>
+                        <option value="plastics">Plastics</option>
+                        <option value="paper">Paper</option>
+                        <option value="electronics">Electronics</option>
+                    </select>
+                </div>
+                
+                <!-- Pricing and Stock Information -->
+                <div class="form-group">
+                    <label class="form-label">Price (₹) *</label>
+                    <input type="number" class="form-control" name="price" min="1" step="0.01" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Stock Quantity *</label>
+                    <input type="number" class="form-control" name="stock" min="1" required>
+                </div>
+                
+                <!-- Product Description - Detailed information for customers -->
+                <div class="form-group">
+                    <label class="form-label">Description *</label>
+                    <textarea class="form-control" rows="4" name="description" required></textarea>
+                </div>
+                
+                <!-- Form Submission - Create product with loading state -->
+                <button type="submit" class="btn btn--primary btn--full-width loading-btn">
+                    <span class="btn-text">Add Product</span>
+                    <span class="btn-loading hidden">Adding...</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- ========================================
+     DEALER ORDERS SECTION - Order management for dealers
+     ======================================== -->
+<section id="dealer-orders" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Orders Received</h1>
+            <p>Manage orders for your products</p>
+        </div>
+        
+        <!-- Orders List - All orders for dealer's products -->
+        <div class="orders-list" id="dealerOrdersList">
+            <!-- Dealer orders will be dynamically loaded here by JavaScript -->
+            <!-- Each order displays:
+                 - Customer information and order details
+                 - Product quantities and total amount
+                 - Order status and fulfillment options
+                 - Delivery address and contact details
+                 - Payment status and processing options -->
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     DEALER PICKUPS SECTION - Pickup request management for dealers
+     ======================================== -->
+<section id="dealer-pickups" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Pickup Requests</h1>
+            <p>View pickup bookings in your area</p>
+        </div>
+        
+        <!-- Pickups List - Available pickup opportunities for dealers -->
+        <div class="pickups-list" id="dealerPickupsList">
+            <!-- Dealer pickups will be dynamically loaded here by JavaScript -->
+            <!-- Each pickup shows:
+                 - Customer location and material details
+                 - Estimated weight and value
+                 - Preferred pickup date/time
+                 - Accept/decline pickup options
+                 - Distance from dealer location -->
+        </div>
+    </div>
+</section>
