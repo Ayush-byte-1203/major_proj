@@ -8,8 +8,7 @@ from the root directory. It automatically navigates to the correct
 backend directory and starts the application.
 
 Usage:
-    python3 start.py                    # Start modular version (recommended)
-    python3 start.py --original         # Start original monolithic version
+    python3 start.py                    # Start application (recommended)
     python3 start.py --help             # Show help information
 """
 
@@ -21,8 +20,6 @@ import argparse
 def main():
     """Main startup function"""
     parser = argparse.ArgumentParser(description='Start EcoScrap Application')
-    parser.add_argument('--original', action='store_true', 
-                       help='Start original monolithic version instead of modular')
     
     args = parser.parse_args()
     
@@ -40,17 +37,17 @@ def main():
     os.chdir(backend_dir)
     print(f"📁 Changed to backend directory: {backend_dir}")
     
-    # Determine which application to run
-    if args.original:
-        app_file = "app.py"
-        print("🚀 Starting original monolithic application...")
-    else:
-        app_file = "app_modular.py"
-        print("🚀 Starting modular application (recommended)...")
+    # Use the main app.py file
+    app_file = "app.py"
+    print("🚀 Starting EcoScrap application...")
     
     # Check if the application file exists
     if not os.path.exists(app_file):
         print(f"❌ Application file not found: {app_file}")
+        print("Available files:")
+        for file in os.listdir('.'):
+            if file.endswith('.py'):
+                print(f"  - {file}")
         sys.exit(1)
     
     # Start the application
