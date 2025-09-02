@@ -239,22 +239,22 @@ const sampleData = {
      */
     demoUsers: [
         {
-            email: "admin@ecoscrap.com",
+            email: "admin",
             password: "admin123", 
             role: "admin",
             name: "Admin User",
-            phone: "+91 9999999999",
-            address: "EcoScrap HQ, Bandra Kurla Complex, Mumbai, Maharashtra 400051",
+            phone: "+91 8320978291",
+            address: "Vadodara",
             status: "active",
             joinDate: "2024-01-15"
         },
         {
-            email: "dealer1@ecoscrap.com",
+            email: "dealer1",
             password: "dealer123",
             role: "dealer", 
-            name: "Rajesh Kumar",
-            phone: "+91 9876543210",
-            address: "123 Industrial Area, Okhla Phase II, New Delhi 110020",
+            name: "Dhruv Kumar",
+            phone: "+91 9875182868",
+            address: "123 Industrial Area, Okhla Phase II, Surat 391231",
             status: "active",
             joinDate: "2024-02-20",
             businessName: "Kumar Metals & Recyclers"
@@ -281,7 +281,7 @@ const sampleData = {
             joinDate: "2024-02-25"
         },
         {
-            email: "customer2@ecoscrap.com",
+            email: "customer",
             password: "customer123",
             role: "customer",
             name: "Amit Patel", 
