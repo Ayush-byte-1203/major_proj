@@ -239,7 +239,7 @@ const sampleData = {
      */
     demoUsers: [
         {
-            email: "admin",
+            email: "admin@gmail.com",
             password: "admin123", 
             role: "admin",
             name: "Admin User",
@@ -249,7 +249,7 @@ const sampleData = {
             joinDate: "2024-01-15"
         },
         {
-            email: "dealer1",
+            email: "dealer1@gmai.com",
             password: "dealer123",
             role: "dealer", 
             name: "Dhruv Kumar",
@@ -281,7 +281,7 @@ const sampleData = {
             joinDate: "2024-02-25"
         },
         {
-            email: "customer",
+            email: "customer1@gmail.com",
             password: "customer123",
             role: "customer",
             name: "Amit Patel", 
