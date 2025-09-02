@@ -616,8 +616,46 @@ function resetDatabase() {
     }
 }
 
+/**
+ * Refresh data from code changes without clearing everything
+ * This function updates rates and products with the latest data from your code
+ * Use this when you want to see price changes immediately without losing user data
+ */
+function refreshData() {
+    try {
+        console.log('🔄 Refreshing data from code...');
+        
+        // Update rates with latest data from code
+        Database.saveRates(sampleData.rates);
+        console.log('✅ Rates updated with latest prices');
+        
+        // Update products with latest data from code
+        sampleData.products.forEach(product => {
+            Database.saveProduct(product);
+        });
+        console.log('✅ Products updated with latest data');
+        
+        // Update tips with latest data from code
+        Database.saveTips(sampleData.tips);
+        console.log('✅ Tips updated with latest content');
+        
+        console.log('🔄 Data refresh complete! New prices and data loaded.');
+        
+        // Refresh the page content without full reload
+        if (typeof loadRates === 'function') loadRates();
+        if (typeof loadHomeData === 'function') loadHomeData();
+        if (typeof loadProducts === 'function') loadProducts();
+        
+        console.log('✅ Page content refreshed with new data');
+        
+    } catch (error) {
+        console.error('❌ Error refreshing data:', error);
+    }
+}
+
 // ========================================
 // GLOBAL ACCESS
 // ========================================
-// Make reset function globally accessible for manual use
+// Make functions globally accessible for manual use
 window.resetDatabase = resetDatabase;
+window.refreshData = refreshData;
