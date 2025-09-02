@@ -575,8 +575,49 @@ function initializeDatabase() {
             sampleData.products.forEach(product => Database.saveProduct(product));
         }
         
-        console.log('Database initialized successfully');
+        console.log('✅ Database initialized successfully');
     } catch (error) {
-        console.error('Error initializing database:', error);
+        console.error('❌ Error initializing database:', error);
     }
 }
+
+/**
+ * Reset the database by clearing all localStorage data and reinitializing
+ * This function forces a complete refresh of all data from the updated sampleData
+ * Use this when you've made changes to the sample data and want to see them immediately
+ */
+function resetDatabase() {
+    try {
+        console.log('🔄 Resetting database...');
+        
+        // Clear all localStorage data
+        localStorage.removeItem('ecoscrap_users');
+        localStorage.removeItem('ecoscrap_rates');
+        localStorage.removeItem('ecoscrap_tips');
+        localStorage.removeItem('ecoscrap_products');
+        localStorage.removeItem('ecoscrap_transactions');
+        localStorage.removeItem('ecoscrap_pickups');
+        localStorage.removeItem('ecoscrap_cart');
+        
+        console.log('🗑️ All localStorage data cleared');
+        
+        // Reinitialize with fresh data
+        initializeDatabase();
+        
+        console.log('✅ Database reset complete! New data loaded.');
+        
+        // Reload the page to show updated content
+        setTimeout(() => {
+            location.reload();
+        }, 1000);
+        
+    } catch (error) {
+        console.error('❌ Error resetting database:', error);
+    }
+}
+
+// ========================================
+// GLOBAL ACCESS
+// ========================================
+// Make reset function globally accessible for manual use
+window.resetDatabase = resetDatabase;
