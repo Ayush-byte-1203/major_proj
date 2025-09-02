@@ -322,15 +322,15 @@ const sampleData = {
      * Rates are in Indian Rupees (₹) per kilogram
      */
     rates: [
-        {material: "Aluminum", ratePerKg: 140, trend: "up", icon: "🥤"},
-        {material: "Copper", ratePerKg: 650, trend: "up", icon: "🔌"},
+        {material: "Aluminum", ratePerKg: 105, trend: "up", icon: "🥤"},
+        {material: "Copper", ratePerKg: 180, trend: "up", icon: "🔌"},
         {material: "Steel", ratePerKg: 45, trend: "stable", icon: "🔩"},
-        {material: "Brass", ratePerKg: 420, trend: "up", icon: "🔧"},
+        {material: "Brass", ratePerKg: 3000, trend: "up", icon: "🔧"},
         {material: "Iron", ratePerKg: 35, trend: "stable", icon: "⚙️"},
         {material: "Plastic", ratePerKg: 25, trend: "down", icon: "♻️"},
         {material: "Cardboard", ratePerKg: 8, trend: "up", icon: "📦"},
         {material: "Newspaper", ratePerKg: 12, trend: "stable", icon: "📰"},
-        {material: "Electronics", ratePerKg: 250, trend: "up", icon: "💾"}
+        {material: "Electronics", ratePerKg: 200, trend: "up", icon: "💾"}
     ],
 
     // ========================================
@@ -465,7 +465,7 @@ const sampleData = {
             dealerEmail: "dealer1@ecoscrap.com",
             dealerName: "Rajesh Kumar",
             name: "Copper Wire Scraps", 
-            price: 10400,
+            price: 3000,
             category: "metals",
             description: "Pure copper wire scraps with excellent conductivity. Ideal for electrical applications.",
             status: "approved",
@@ -504,7 +504,7 @@ const sampleData = {
             dealerEmail: "dealer3@ecoscrap.com",
             dealerName: "Mohammed Ali",
             name: "Aluminum Cans Bundle",
-            price: 2700,
+            price: 2250,
             category: "metals",
             description: "Clean aluminum cans ready for recycling. Sorted and compressed for easy handling.",
             status: "approved",
@@ -517,7 +517,7 @@ const sampleData = {
             dealerEmail: "dealer3@ecoscrap.com",
             dealerName: "Mohammed Ali",
             name: "Electronic Components",
-            price: 15000,
+            price: 1000,
             category: "electronics",
             description: "Mixed electronic components and circuit boards. Great for precious metal recovery.",
             status: "approved",
@@ -530,7 +530,7 @@ const sampleData = {
             dealerEmail: "dealer1@ecoscrap.com",
             dealerName: "Rajesh Kumar",
             name: "Brass Fittings",
-            price: 8900,
+            price: 1500,
             category: "metals",
             description: "High-quality brass fittings and pipes. Perfect for plumbing and electrical work.",
             status: "approved",
